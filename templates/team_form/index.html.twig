@@ -1,0 +1,47 @@
+{% block body %}
+
+<div class="guigui modal fade right" id="addTeam" tabindex="-1" role="dialog" aria-labelledby="addTeam" aria-hidden="true">
+
+	{# modal ouvrant le formulaire #}
+	{{ form_start(form)}}
+	<div class="modal-content">
+		<div class="form_add_team form-add">
+			<div>
+				{# intiltulé du champ #}
+				{# display the label of the field #}
+				{{ form_label(form.category, 'Catégorie') }}
+				{# champ de formulaire #}
+				{# input of the form #}
+				{{ form_widget(form.category) }}
+			</div>
+			<div>
+				{# intiltulé du champ #}
+				{# display the label of the field #}
+				{{ form_label(form.play_season, 'Saison jouée')}}
+				{# champ de formulaire #}
+				{# input of the form #}
+				{{ form_widget(form.play_season)}}
+			</div>
+			<div>
+			{# intiltulé du champ #}
+				{# display the label of the field #}
+				{{ form_label(form.picture, 'Photo') }}
+				{# champ de formulaire #}
+				{# input of the form #} 
+				{{ form_widget(form.picture) }}
+			</div>
+			{# bouton d'ajout #}
+			{# add button #}
+			<button type="submit" class="btn-lg pointer">Ajouter</button>
+			<center>
+			{# bouton annulé #}
+			{# cancel button #}
+				<a id="close" class="underline" href="">Annuler</a>
+			</center>
+		</div>
+	</div>
+	{{ form_end(form)}}
+	{# fin du formulaire #}
+</div>
+
+{% endblock %}

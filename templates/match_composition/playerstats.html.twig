@@ -1,0 +1,47 @@
+<div class="player{{id}}-stats-modal stats-modal-hidden">
+
+    <table id="player-stats-modal-table">
+            <tr>
+            <td></td>
+            <td style="background-color:#013974; color:white;" class="head">MATCH /</td>
+            
+            
+            <td style="background-color:#013974; color:white;" class="head">TOTAL</td>
+            </tr>
+            <tr>
+                <td class="head">Essais</td>
+                <td class="body">{{ essais }}</td>
+                <td class="body">{{ player.totalessais }}</td>
+            </tr>
+            <tr>
+                <td class="head">transformations</td>
+                <td class="body">{{ transformations }}</td>
+                <td class="body">{{ player.totaltransformations }}</td>
+            </tr>
+            <tr>
+                <td class="head">Pénalités</td>
+                <td class="body">{{ penalites }}</td>
+                <td class="body">{{ player.totalpenalites }}</td>
+            </tr>
+            <tr>
+                <td class="head">Drops</td>
+                <td class="body">{{ drops }}</td>
+                <td class="body">{{ player.totaldrops }}</td>
+            </tr>
+            <tr>
+                <td class="head">Cartons rouges</td>
+                <td class="body">{{ rouges }}</td>
+                <td class="body">{{ player.totalrouges }}</td>
+            </tr>
+            <tr>
+                <td class="head">Cartons jaunes</td>
+                <td class="body">{{ jaunes }}</td>
+                <td class="body">{{ player.totaljaunes }}</td>
+            </tr>
+                <td class="head">Temps de jeu</td>
+                <td class="body">{{ player.temps }}</td>
+                <td class="body">{{ player.totaltemps }}</td>
+            </tr>
+    
+    </table>
+</div>

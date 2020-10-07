@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connection{% endblock %}
+
+{% block body %}
+<div class="log-wrap">
+    <div class="log-container container">
+        <div class="head-title">
+            <h1 class="project-ffr">PROJET REC</h1>
+            <hr class="separator">
+        </div>
+        <form method="post">
+            {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            {% if app.user %}
+            <div class="mb-3">
+                You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+            </div>
+            {% endif %}
+            <div class="form-wrap">
+                <label for="inputEmail">Adresse mail</label>
+                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control"
+                    required autofocus>
+                <label for="inputPassword">Mot de passe</label>
+                <input type="password" name="password" id="inputPassword" class="form-control" required>
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                <button class="btn-lg pointer" type="submit">
+                    ME CONNECTER
+                </button>
+                <a class="underline" href="{{ path('app_register') }}">Créer un compte</a>
+                {# <div class="form-sublink">
+                <a class="underline" href="">Réinitialiser mon mot de passe</a>
+                <a class="underline" href="">Je ne me souviens plus de mon nom d'utilisateur</a>
+            </div> #}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

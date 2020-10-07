@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ShowTeamController!{% endblock %}
+
+{% block body %}
+
+{% include 'main_nav.html.twig' %}
+
+    <div class="players-wrapper">
+
+        {% for team in team %}
+
+            <a href="/match/calendar/{{team.id}}">{{team.category}}</a>
+
+        {% endfor %}
+    </div>
+{% endblock %}

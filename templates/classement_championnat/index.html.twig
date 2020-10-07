@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Statistiques{% endblock %}
+
+{% block body %}
+
+{% include 'main_nav.html.twig' %}
+
+<div class="main-wrapper">
+    <iframe src="https://www.rugbyfederal.com/Resultats/index.php?division=D5&ligue=FFR&poule=2&jour=100&year=2020"
+        width="100%" height="100%" sandbox></iframe>
+    <div class="dashboard">
+    </div>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+<script>
+    iframeContent = $('#myTable', $('iframe').contents());
+    iframeContent.hide();
+</script>
+
+{% endblock %}

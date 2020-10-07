@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un coach{% endblock %}
+
+{% block body %}
+
+{% include 'main_nav.html.twig' %}
+
+<div class="main-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="dash-card col-12 col-sm-6 mx-auto">
+                {{ form(form) }}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

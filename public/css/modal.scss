@@ -1,0 +1,54 @@
+@import 'variable';
+
+#modal {
+    display: none;
+}
+
+.modal-content {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    place-content: center;
+    background-color: #0000009e;
+    z-index: 999;
+    display: grid;
+
+    label {
+        margin-bottom: 0;
+    }
+
+}
+        .modal-card {
+            overflow: auto;
+        }
+
+.form-add {
+    div {
+        display: grid;
+    }
+}
+
+.form_add_team {
+    background-color: $gray;
+    padding: 2rem;
+    border-top: 4px solid $red;
+
+    div {
+        text-align: center;
+        padding: .5rem .5rem .25rem;;
+    }
+
+    select {
+        padding: .55rem;
+        width: fit-content;
+        margin: auto;
+    }
+}
+
+// players
+.add_players {
+    label {
+        
+    }
+}

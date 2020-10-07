@@ -1,0 +1,111 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Calendrier des Matchs {% endblock %}
+
+{% block body %}
+
+{{ include('main_nav.html.twig', {'idteam': idteam}) }}
+
+<div class="body-wrapper">
+    <div class="menu-tab">
+        <h4 class="active">
+            <a href="">Calendrier des matches</a>
+        </h4>
+    </div>
+
+    <div class="main-wrapper">
+        <div class="dashboard">
+            <div class="dash-card table-responsive">
+                <table id="match-calendar" class="stripe hover cell-border dt-body-center">
+                    <thead>
+                        <tr>
+                            <th data-priority="1">Type</th>
+                            <th data-priority="2">Date (A/M/J)</th>
+                            <th data-priority="3">Équipe locale</th>
+                            <th data-priority="4">Équipe visiteur</th>
+                            <th data-priority="6">SCORE</th>
+                            <th data-priority="5">Détail</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for match in match %}
+                        <tr>
+                            <td>{{ match.matchtype.name }}</td>
+                            <td>{{ match.date |date("Y/m/d") }}</td>
+                            <td>{{ match.localteam }}</td>
+                            <td>{{ match.visitorteam }}</td>
+                            <td>{{ match.recScore }} / {{ match.visiteurScore }}</td>
+                            <td>
+                                <a href="/match/composition/{{ match.id }}"><small><img class="editicon"
+                                            src="{{asset ('icons/stat.png') }}" title="stat joueur"></small></a>
+                                <a href="/stat/match/{{ match.id }}"><small><img class="editicon"
+                                            src="{{asset ('icons/eyes.png') }}" alt="stat"
+                                            title="stat match"></small></a>
+                                <img class="editicon pointer" src="{{asset ('icons/trash.png') }}" data-toggle="modal"
+                                    data-target="#SupprimerMatch-{{match.id}}" title="sup match">
+                            </td>
+                        </tr>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="SupprimerMatch-{{match.id}}" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">
+                                            <center>Êtes vous sur de vouloir supprimer?</center>
+                                        </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Non
+                                        </button>
+                                        <button type="button" class="btn btn-primary"><a
+                                                href="{{path('del_match', {id_team: idteam, id_match: match.id})}}">Oui</a>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                    </tbody>
+                </table>
+                <a href="" class="add-match-btn btn-lg pointer">+ Ajouter un match</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'add_match/index.html.twig' with {'form': form} %}
+
+<script>
+    $(document).ready(function () {
+        $('#match-calendar').DataTable({
+            "language": {
+                "url": "{{ asset('js/french.lang') }}"
+            },
+            "order": [
+                [1, 'asc']
+            ],
+            responsive: true,
+            autoWidth: false
+        });
+        $('.add-match-btn').click(function (e) {
+            e.preventDefault()
+            $('.modal').fadeIn()
+        })
+        $('.close-btn').click(function (e) {
+            e.preventDefault()
+            $('.modal').fadeOut()
+        })
+    });
+</script>
+
+{% endblock %}

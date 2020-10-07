@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Statistiques match{% endblock %}
+
+{% block body %}
+
+<style>
+    #StatMatchForm {
+        padding: 0 20px;
+        white-space: nowrap;
+    }
+
+    #StatMatchForm,
+    .player {
+        display: grid;
+        grid-auto-flow: column;
+        grid-column-gap: 1rem;
+        border-bottom: 1px solid #00000069;
+    }
+
+    fieldset:nth-child(odd) {
+        background: #f9f9f9
+    }
+
+    fieldset:nth-child(odd) .col-form-label {
+        background: #f9f9f9
+    }
+
+    .col-form-label {
+        font-weight: bold;
+        font-size: 1.25rem !important;
+        padding: 12px 20px;
+        border-bottom: 1px solid rgba(0, 0, 0, .125);
+    }
+
+    .player {
+        padding: 0 20px;
+    }
+
+    .form-group {
+        margin-bottom: 0;
+    }
+    .form-group label {
+        margin-bottom: 0;
+    }
+</style>
+
+{% include 'main_nav.html.twig' %}
+
+<div class="main-wrapper">
+    <div class="dash-card table-responive">
+        <div class="card-header">
+            <h4>Résultat du match !</h4>
+        </div>
+
+        {{ form_start(form, {'attr': {'id': ''}}) }}
+
+        <div id="StatMatchForm" class="cell-border row-border">
+            <div>{{ form_row(form.recScore) }}</div>
+            <div>{{ form_row(form.visiteurScore) }}</div>
+        </div>
+        {{ form_end(form)}}
+    </div>
+</div>
+
+{% endblock %}

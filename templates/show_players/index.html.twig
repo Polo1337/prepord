@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des joueurs{% endblock %}
+
+{% block body %}
+
+	{% include 'main_nav.html.twig' %}
+
+	<div class="body-wrapper">
+		<div class="menu-tab">
+			<h4 class="active">
+				<a href="">Listes des joueurs</a>
+			</h4>
+		</div>
+		<div class="main-wrapper">
+			<div class="dashboard">
+				<div class="dash-card table-responsive">
+					<table id="players-list" class="stripe hover cell-border dt-justify">
+						<thead>
+							<tr>
+								<th data-priority="1">Nom</th>
+								<th data-priority="10">Prénom</th>
+								<th data-priority="">Édition</th>
+								<th data-priority="3">Essais</th>
+								<th data-priority="4">transformations</th>
+								<th data-priority="5">Pénalités</th>
+								<th data-priority="6">Drops</th>
+								<th data-priority="7">Cartons rouges</th>
+								<th data-priority="8">Cartons jaunes</th>
+								<th data-priority="9">Temps de jeu</th>
+								<th data-priority="2">Catégorie</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for player in players %}
+								<tr>
+									<td>{{ player.lestname}}<br><small style="font-size: 0.85rem;">
+									<td>{{ player.firstname }}</td>
+									<td>
+										<a href="{{ path('show_players', {id_team: team.id, id_player: player.id}) }}">
+											<img class="editicon" src="{{asset ('icons/edit.png') }}">
+										</a>
+										<img class="editicon pointer" src="{{asset ('icons/trash.png') }}" data-toggle="modal"
+											data-target="#SupprimerPlayer-{{player.id}}">
+										<!-- Modal -->
+										<div class="modal fade" id="SupprimerPlayer-{{player.id}}" tabindex="-1"
+											aria-labelledby="exampleModalLabel" aria-hidden="true">
+											<div class="modal-dialog modal-dialog-centered">
+												<div class="modal-content">
+													<div class="modal-header">
+														<h5 class="modal-title" id="exampleModalLabel">
+															<center>Êtes vous sur de vouloir supprimer?</center>
+														</h5>
+														<button type="button" class="close" data-dismiss="modal"
+															aria-label="Close">
+															<span aria-hidden="true">&times;</span>
+														</button>
+													</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-secondary"
+															data-dismiss="modal">Non</button>
+														<button type="button" class="btn btn-primary"><a
+																href="{{path('del_player', {id_team: team.id, id_player: player.id})}}">Oui</a></button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</td>
+									<td>{{ player.totalessais }}</td>
+									<td>{{ player.totaltransformations }}</td>
+									<td>{{ player.totalpenalites }}</td>
+									<td>{{ player.totaldrops }}</td>
+									<td>{{ player.totalrouges }}</td>
+									<td>{{ player.totaljaunes }}</td>
+									<td>{{ player.totaltemps }}</td>
+									<td>{{ team.category}}</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+					<a class="add-player-btn btn-lg pointer" href="{{ path('show_players', {id_team: team.id, id_player: -2}) }}">+ Ajouter un joueur</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{% include 'player_form/index.html.twig' with {'form': form} %}
+
+	<script>
+		$(document).ready(function () {
+			$('#players-list').DataTable({
+				"language": {
+					"url": "{{ asset('js/french.lang') }}"
+				},
+				responsive: true,
+				autoWidth: false
+			});
+			
+			$('.close-btn').click(function (e) {
+				e.preventDefault()
+				$('.modal').fadeOut()
+			})
+			{% if openmodal == true %}
+				$('.modal').fadeIn()
+			{% endif %}
+		});
+	</script>
+
+{% endblock %}

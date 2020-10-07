@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+{% for flashError in app.flashes('verify_email_error') %}
+<div class="alert alert-danger" role="alert">{{ flashError }}</div>
+{% endfor %}
+<div class="log-wrap">
+    <div class="log-container">
+        <div class="head-title">
+            <h1 class="project-ffr">PROJET REC</h1>
+            <hr class="separator">
+        </div>
+        <div class="form-wrap">
+            <h2>Créer mon compte</h2>
+            {{ form_start(registrationForm) }}
+            {{ form_row(registrationForm.email, {'attr': {'placeholder': 'Adresse email ...'}}) }}
+            {{ form_row(registrationForm.plainPassword, {
+            label: 'Mot de passe', 'attr': {'placeholder': 'Mot de passe !'}
+        }) }}
+            <div class="form-row">
+                <div class="form-check col-12">
+                    {{ form_widget(registrationForm.agreeTerms)}}
+                    {{ form_label(registrationForm.agreeTerms, 'J\'accepte les conditions générales' )}}
+                </div>
+            </div>
+            <button type="submit" class="btn-lg pointer">Créer mon compte</button>
+            {{ form_end(registrationForm) }}
+        </div>
+    </div>
+</div>
+{% endblock %}

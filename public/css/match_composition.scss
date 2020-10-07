@@ -1,0 +1,109 @@
+@import 'variable';
+
+.example-wrapper > div > div {
+margin: 0 .5rem;
+}
+
+.field-position {
+    width: 50px;
+    height: 50px;
+    border: 4px dashed white;
+    background-color: rgba(255, 255, 255, 0.275);
+    border-radius: 5px;
+    display: grid;
+    place-content: center;
+    position: relative;
+    
+    div {
+        background-color: $gray;
+    }
+}
+
+.field-position .field-number {
+    position: absolute;
+    color: white;
+    top: 5px;
+    left: 5px;
+}
+
+.droppable-over {
+    width: 50px;
+    height: 50px;
+    border: 4px dashed green;
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.275);
+    border-radius: 5px;
+}
+
+.field-row {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-around;
+}
+
+#players_list {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-around;
+    border: 4px dashed rgb(1, 57, 116);
+    background-color: rgb(227, 232, 238);
+    min-width: 3rem;
+    min-height: 3rem;
+}
+
+.player_card {
+    display: flex;
+    flex-direction: column;
+    width: 60px;
+    height: auto;
+    border: 2px solid $red;
+    margin: .5rem;
+    z-index: 99;
+
+    img {
+        width: 56px;
+    }
+}
+
+.player_initials {
+    background-color: $blue;
+    color: $gray;
+    font-weight: bold;
+    text-align: center;
+    padding: .1rem;
+}
+
+.stats-modal-hidden {
+    display: none;
+    position: absolute;
+    box-shadow: (0px 0px 8px #44444426);
+    z-index: 100;
+}
+
+table {
+    border: 1px solid #0000001f;
+
+    tr td:first-of-type {
+        text-transform: uppercase;
+        text-align: right;
+        padding: .2rem;
+        background-color: $blue;
+        color: $gray;
+    }
+
+    tr td:last-of-type {
+        padding: .2rem;
+        max-width: 100px;
+    }
+
+    td.head {
+        border-bottom: 1px solid $gray;
+    }
+
+    td.body {
+        border-bottom: 1px solid #0000001f;
+        background-color: $gray;
+    }
+}

@@ -1,0 +1,17 @@
+<div class="main-wrapper">
+    <div class="dash-card table-responive">
+		{{ form_start(form, {'action': path('stat_joueur', {'id_player': id_player, 'id_match': id_match  }) }) }}
+        <div id="StatMatchForm" class="cell-border row-border">
+            <div class="card-header">
+				<a href="" class="dis-block close-btn">&larr; Retour</a>
+            </div>
+            <div>{{ form_row(form.rouges) }}</div>
+            <div>{{ form_row(form.jaunes) }}</div>
+            <div>{{ form_row(form.essais) }}</div>
+            <div>{{ form_row(form.transformations) }}</div>
+            <div>{{ form_row(form.penalites) }}</div>
+            <div>{{ form_row(form.drops) }}</div>
+        </div>
+        {{ form_end(form)}}
+    </div>
+</div>

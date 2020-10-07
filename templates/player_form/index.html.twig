@@ -1,0 +1,52 @@
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="modal guigui">
+	<div class="modal-content">
+		<div class="dash-card modal-card">
+			<div class="card-header">
+				<a href="" class="dis-block close-btn">&larr; Retour</a>
+			</div>
+			<div class="container">
+				{{ form_start(form, {'attr': {'id': 'player_form'}}) }}
+				<div class="form-row">
+					<div class="col-xs-12 col-sm-6">
+						{{ form_row(form.lest_name) }}
+					</div>
+					<div class="col-xs-12 col-sm-6">
+						{{ form_row(form.first_name) }}
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-xs-12 col-md-6">
+						{{ form_row(form.picture) }}
+					</div>
+					<div class="form-group col-xs-12 col-md-6">
+						{{ form_row(form.license_number) }}
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-xs-12 col-sm-6">
+						<div class="form-row">
+							<div class="form-group col-xs-12 col-md-6">
+								{{ form_row(form.is_post) }}
+							</div>
+							<div class="form-group col-xs-12 col-md-6">
+								{{ form_row(form.play_in) }}
+							</div>
+						</div>
+					</div>
+					<div class="form-group col-xs-12 col-sm-6">
+						{{ form_row(form.birth_date ) }}
+						{{ form_row(form.club_entry_date ) }}
+					</div>
+				</div>
+				{{ form_end(form)}}
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

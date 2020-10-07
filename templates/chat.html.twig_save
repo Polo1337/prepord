@@ -1,0 +1,81 @@
+<div class="guigui">
+	<div
+		class="modal" id="messagesModal" tabindex="-1" aria-labelledby="messagesModalLabel" aria-hidden="true">
+
+		{# </div> #}
+		{{ form_start(chat) }}
+
+		<div class="modal-content">
+			{# <div class="modal-header"> #}
+			<h5 class="modal-title" id="messagesModalLabel">
+				<center>Votre Messagerie</center>
+			</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+
+			<div class="form_add_team form-add">
+
+				{% for chat in app.user.finances.chats %}
+					<div class="" style="">
+						<p>
+							<b style="font-weight: bold;">
+								<u>{{ chat.Auteur }}
+									:
+								</u>
+							</b><br>{{ chat.Contenu }}</p>
+						<p class="msg_time">{{ chat.Datechat|date("Y/m/d") }}</p>
+					</div>
+				{% endfor %}
+				<div>
+					{{ form_widget(chat, { 'attr': {'class': 'form-control'} })}}
+				</div>
+				<div class="">
+					<button class="btn btn-mdb-color messagerie-submit">Envoyer</button>
+					<button type="button" class="btn btn-mdb-color" data-dismiss="modal">Fermer</button>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	{{ form_end(chat) }}
+</div>
+
+
+{# <div class="modal fade right" id="messagesModal" tabindex="-1" role="dialog" aria-labelledby="messagesModalLabel" aria-hidden="true">
+					<div class="modal-dialog  modal-full-height modal-right" role="document">
+						<div class="modal-content">
+							<div class="modal-header mdb-color">
+								<h5 class="modal-title" id="messagesModalLabel">Messagerie</h5>
+							</div>
+							<div class="modal-body" style="text-align:start">
+								<div class="container" style="overflow-y: auto; overflow-x: auto; max-height: 30em; border: 1px solid #ced4da;">
+									{% for chat in app.user.finances.chats %}
+										<div class="row" style="margin-left: 2px;">
+											<div class="justify-content-start mb-4">
+												<p>
+													<b style="font-weight: bold;">
+														<u>{{ chat.Auteur }}
+															:
+														</u>
+													</b><br>{{ chat.Contenu }}</p>
+												<p class="msg_time">{{ chat.Datechat|date("Y/m/d") }}</p>
+											</div>
+										</div>
+									{% endfor %}
+								</div>
+								<div class="md-form">
+									{{ form_start(chat) }}
+									{{ form_widget(chat, { 'attr': {'class': 'form-control'} })}}
+									<button class="btn btn-mdb-color messagerie-submit">Envoyer</button>
+									{{ form_end(chat) }}
+								</div>
+							</div>
+							<div class="modal-footer mdb-color">
+								<button type="button" class="btn btn-mdb-color" data-dismiss="modal">Fermer</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				</div> #}

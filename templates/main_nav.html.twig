@@ -1,0 +1,109 @@
+{% set route = app.request.get('_route') %}
+<style>
+	.a-white {
+		color: white !important;
+	}
+</style>
+<div id="nav">
+	<div class="sm-menu nav-container">
+		<ul class="main-list">
+			<li>
+				<a href="/team/screen">
+					<h3>{{ app.user.finances.name }}
+					</h3>
+				</a>
+			</li>
+			<li>
+				<ul>
+					<li class="mb-screen">
+						<a href="/show/players/{{ idteam }}">
+							<img class="svg-icon" src="{{ asset('icons/users.svg')}}">
+						</a>
+					</li>
+					<li class="mb-screen">
+						<a href="/match/calendar/{{idteam}}">
+							<img class="svg-icon" src="{{ asset('icons/calendar.svg')}}">
+						</a>
+					</li>
+					<li class="mb-screen">
+						<a href="/parameter/coach/{{ idteam }}">
+							<img class="svg-icon" src="{{ asset('icons/settings.svg')}}">
+						</a>
+					</li>
+					<li class="mb-screen">
+						<a href="/logout">
+							<img class="svg-icon" src="{{ asset('icons/signout.svg')}}" alt="=déconnection">
+						</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<div class="bg-menu tab-container">
+		<ul class="sub-menu">
+			<li class="{{ 'match' in route ? 'active' }}">
+				<a
+					href="/match/calendar/{{idteam}}">
+					<!-- <div class="li-wrapper {% if app.request.attributes.get('_route') starts with 'match' %}active{% endif %}"> -->
+					<div class="li-wrapper {{ 'match' in route ? 'active' }}">
+						<svg xmlns="http://www.w3.org/2000/svg" width="31.5" height="36" viewbox="0 0 31.5 36">
+							<path id="calendar" class="cls-1" d="M0,32.625A3.376,3.376,0,0,0,3.375,36h24.75A3.376,3.376,0,0,0,31.5,32.625V13.5H0ZM22.5,18.844A.846.846,0,0,1,23.344,18h2.813a.846.846,0,0,1,.844.844v2.813a.846.846,0,0,1-.844.844H23.344a.846.846,0,0,1-.844-.844Zm0,9A.846.846,0,0,1,23.344,27h2.813a.846.846,0,0,1,.844.844v2.813a.846.846,0,0,1-.844.844H23.344a.846.846,0,0,1-.844-.844Zm-9-9A.846.846,0,0,1,14.344,18h2.813a.846.846,0,0,1,.844.844v2.813a.846.846,0,0,1-.844.844H14.344a.846.846,0,0,1-.844-.844Zm0,9A.846.846,0,0,1,14.344,27h2.813a.846.846,0,0,1,.844.844v2.813a.846.846,0,0,1-.844.844H14.344a.846.846,0,0,1-.844-.844Zm-9-9A.846.846,0,0,1,5.344,18H8.156A.846.846,0,0,1,9,18.844v2.813a.846.846,0,0,1-.844.844H5.344a.846.846,0,0,1-.844-.844Zm0,9A.846.846,0,0,1,5.344,27H8.156A.846.846,0,0,1,9,27.844v2.813a.846.846,0,0,1-.844.844H5.344a.846.846,0,0,1-.844-.844ZM28.125,4.5H24.75V1.125A1.128,1.128,0,0,0,23.625,0h-2.25A1.128,1.128,0,0,0,20.25,1.125V4.5h-9V1.125A1.128,1.128,0,0,0,10.125,0H7.875A1.128,1.128,0,0,0,6.75,1.125V4.5H3.375A3.376,3.376,0,0,0,0,7.875V11.25H31.5V7.875A3.376,3.376,0,0,0,28.125,4.5Z"/>
+						</svg>
+						<p>Matches</p>
+					</div>
+				</a>
+			</li>
+			<li class="{{ 'player' in route ? 'active' }}">
+				<a href="/show/players/{{ idteam }}">
+					<div class="li-wrapper ">
+						<svg xmlns="http://www.w3.org/2000/svg" width="45" height="31.5" viewbox="0 0 45 31.5">
+							<path id="Icon_awesome-users" data-name="Icon awesome-users" class="cls-1" d="M6.75,15.75a4.5,4.5,0,1,0-4.5-4.5A4.5,4.5,0,0,0,6.75,15.75Zm31.5,0a4.5,4.5,0,1,0-4.5-4.5A4.5,4.5,0,0,0,38.25,15.75ZM40.5,18H36a4.487,4.487,0,0,0-3.171,1.308A10.285,10.285,0,0,1,38.109,27H42.75A2.248,2.248,0,0,0,45,24.75V22.5A4.5,4.5,0,0,0,40.5,18Zm-18,0a7.875,7.875,0,1,0-7.875-7.875A7.871,7.871,0,0,0,22.5,18Zm5.4,2.25h-.584a10.873,10.873,0,0,1-9.633,0H17.1A8.1,8.1,0,0,0,9,28.35v2.025a3.376,3.376,0,0,0,3.375,3.375h20.25A3.376,3.376,0,0,0,36,30.375V28.35A8.1,8.1,0,0,0,27.9,20.25Zm-15.729-.942A4.487,4.487,0,0,0,9,18H4.5A4.5,4.5,0,0,0,0,22.5v2.25A2.248,2.248,0,0,0,2.25,27H6.884A10.311,10.311,0,0,1,12.171,19.308Z" transform="translate(0 -2.25)"/>
+						</svg>
+						<p>Joueurs</p>
+					</div>
+				</a>
+			</li>
+			<li class="{{ 'classement' in route ? 'active' }}">
+				<a href="/classement/championnat/{{ idteam }}">
+					<div class="li-wrapper">
+						<svg xmlns="http://www.w3.org/2000/svg" width="36" height="27" viewbox="0 0 36 27">
+							<path id="Icon_awesome-chart-line" data-name="Icon awesome-chart-line" d="M34.875,27H4.5V5.625A1.125,1.125,0,0,0,3.375,4.5H1.125A1.125,1.125,0,0,0,0,5.625V29.25A2.25,2.25,0,0,0,2.25,31.5H34.875A1.125,1.125,0,0,0,36,30.375v-2.25A1.125,1.125,0,0,0,34.875,27ZM32.625,6.75h-8.3a1.687,1.687,0,0,0-1.193,2.881l2.278,2.278-5.159,5.16L15.091,11.91a2.249,2.249,0,0,0-3.182,0l-4.83,4.83a1.125,1.125,0,0,0,0,1.591l1.59,1.59a1.125,1.125,0,0,0,1.591,0L13.5,16.682l5.159,5.159a2.249,2.249,0,0,0,3.182,0l6.75-6.75,2.278,2.278a1.687,1.687,0,0,0,2.881-1.193v-8.3A1.124,1.124,0,0,0,32.625,6.75Z" transform="translate(0 -4.5)"/>
+						</svg>
+						<p>Statistiques</p>
+					</div>
+				</a>
+			</li>
+			<li class="{{ 'parameter' in route ? 'active' }}">
+				<a href="/parameter/coach/{{ idteam }}">
+					<div class="li-wrapper">
+						<svg xmlns="http://www.w3.org/2000/svg" width="29.181" height="30" viewbox="0 0 29.181 30">
+							<path id="Icon_material-settings" data-name="Icon material-settings" d="M29.145,19.47a11.69,11.69,0,0,0,.1-1.47,11.69,11.69,0,0,0-.1-1.47l3.165-2.475a.757.757,0,0,0,.18-.96l-3-5.19a.754.754,0,0,0-.915-.33l-3.735,1.5a10.959,10.959,0,0,0-2.535-1.47l-.57-3.975A.731.731,0,0,0,21,3H15a.731.731,0,0,0-.735.63L13.7,7.605a11.524,11.524,0,0,0-2.535,1.47l-3.735-1.5a.732.732,0,0,0-.915.33l-3,5.19a.74.74,0,0,0,.18.96L6.855,16.53A11.9,11.9,0,0,0,6.75,18a11.9,11.9,0,0,0,.105,1.47L3.69,21.945a.757.757,0,0,0-.18.96l3,5.19a.754.754,0,0,0,.915.33l3.735-1.5a10.959,10.959,0,0,0,2.535,1.47l.57,3.975A.731.731,0,0,0,15,33h6a.731.731,0,0,0,.735-.63l.57-3.975a11.524,11.524,0,0,0,2.535-1.47l3.735,1.5a.732.732,0,0,0,.915-.33l3-5.19a.757.757,0,0,0-.18-.96L29.145,19.47ZM18,23.25A5.25,5.25,0,1,1,23.25,18,5.256,5.256,0,0,1,18,23.25Z" transform="translate(-3.406 -3)"/>
+						</svg>
+						<p>Paramètres</p>
+					</div>
+				</a>
+			</li>
+		</ul>
+		<div class="side-menu">
+			<h3>{{ app.user.finances.name }}</h3>
+			<div class="user-info">
+				<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewbox="0 0 36 36">
+					<path id="Icon_awesome-user-alt" data-name="Icon awesome-user-alt" class="cls-1" d="M18,20.25A10.125,10.125,0,1,0,7.875,10.125,10.128,10.128,0,0,0,18,20.25Zm9,2.25H23.126a12.24,12.24,0,0,1-10.252,0H9a9,9,0,0,0-9,9v1.125A3.376,3.376,0,0,0,3.375,36h29.25A3.376,3.376,0,0,0,36,32.625V31.5A9,9,0,0,0,27,22.5Z"/>
+				</svg>
+				<a>{{app.user.email}}</a>
+			</div>
+			<div class="user-info">
+				<svg xmlns="http://www.w3.org/2000/svg" width="34.875" height="34.875" viewbox="0 0 34.875 34.875">
+					<path id="Icon_awesome-sync-alt" data-name="Icon awesome-sync-alt" class="cls-1" d="M26.066,9.371A11.815,11.815,0,0,0,6.543,15.107a.846.846,0,0,1-.819.643H1.695a.843.843,0,0,1-.83-1A17.44,17.44,0,0,1,30.046,5.392l2.511-2.511a1.687,1.687,0,0,1,2.881,1.193V13.5a1.687,1.687,0,0,1-1.687,1.688H24.324a1.688,1.688,0,0,1-1.193-2.881ZM2.25,20.813h9.426a1.688,1.688,0,0,1,1.193,2.881L9.934,26.629a11.815,11.815,0,0,0,19.523-5.735.846.846,0,0,1,.819-.643h4.029a.843.843,0,0,1,.83,1A17.44,17.44,0,0,1,5.954,30.608L3.443,33.119A1.687,1.687,0,0,1,.563,31.926V22.5A1.687,1.687,0,0,1,2.25,20.813Z" transform="translate(-0.563 -0.563)"/>
+				</svg>
+				<a href="/team/screen" class="a-white">Changer d'équipe</a>
+			</div>
+			<div class="log-out-user">
+				<svg xmlns="http://www.w3.org/2000/svg" width="35.436" height="27.004" viewbox="0 0 35.436 27.004">
+					<path id="Icon_awesome-sign-out-alt" data-name="Icon awesome-sign-out-alt" class="cls-1" d="M34.945,19.2,23.133,31.008a1.69,1.69,0,0,1-2.883-1.2v-6.75H10.688A1.683,1.683,0,0,1,9,21.375v-6.75a1.683,1.683,0,0,1,1.688-1.687H20.25V6.188a1.691,1.691,0,0,1,2.883-1.2L34.945,16.8A1.7,1.7,0,0,1,34.945,19.2ZM13.5,30.656V27.844A.846.846,0,0,0,12.656,27H6.75A2.248,2.248,0,0,1,4.5,24.75V11.25A2.248,2.248,0,0,1,6.75,9h5.906a.846.846,0,0,0,.844-.844V5.344a.846.846,0,0,0-.844-.844H6.75A6.752,6.752,0,0,0,0,11.25v13.5A6.752,6.752,0,0,0,6.75,31.5h5.906A.846.846,0,0,0,13.5,30.656Z" transform="translate(0 -4.499)"/>
+				</svg>
+				<a href="/logout" class="a-white">Se déconnecter</a>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,52 @@
+{% block stylesheets %}
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+<link href="{{ asset('css/chat.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+<div class="modal fade right" id="messagesModal" tabindex="-1" role="dialog" aria-labelledby="messagesModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-full-height modal-right" role="document">
+        <div class="modal-content">
+            <div class="modal-header mdb-color" style="align-items: center;">
+
+                <h5 class="modal-title" id="messagesModalLabel">Messagerie</h5>
+                <button type="button" class="btn btn-lg" data-dismiss="modal" style="padding: .25rem .5rem;">x</button>
+            </div>
+            <div class="modal-body">
+                <div class="msg-list">
+					{% for chat in match.chats %}
+
+                        <div class="{% if chat.auteur == app.user.email %}justify-content-end{% endif %}">
+
+                            <div class="{% if chat.auteur == app.user.email %} text-right {% else %} text-left {% endif %}">
+                                <p></p>
+                                <p style="font-weight: bold;">
+                                    <u>{{ chat.Auteur }}
+                                        :
+                                    </u>
+                                </p>
+                                <BR>
+                                <p class="msg_time">{{ chat.Datechat|date("d M. Y, h:m") }}</p>
+                                <br><p>{{ chat.Contenu }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+				</div>
+				<div class="md-chat-form" style="align-self: end;">
+                    <div class="md-form" style=" margin: 0.5rem;">
+
+                        {{ form_start(chat) }}
+                        {# {{ form_label(chat) }} #}
+                        {{ form_widget(chat, { 'attr': {'placeholder': 'Votre message : '} })}}
+                        <button class="btn btn-lg messagerie-submit" style="margin: 0 auto;">Envoyer</button>
+                        {{ form_end(chat) }}
+                    </div>
+                </div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+    var messageBody = document.querySelector('.msg-list');
+messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
+</script>

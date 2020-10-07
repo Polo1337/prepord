@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sélectionnez une équipe{% endblock %}
+
+{% block body %}
+
+{% include 'first_nav.html.twig' %}
+
+
+{% if app.user %}
+<div class="team-wrapper">
+	<div class="team-grid d-flex">
+		{% for team in app.user.coaches %}
+		<a href="/match/calendar/{{ team.id }}">
+			<div class="team-card">
+				<div class="card-header">
+					<p class="team-cat">{{ team.category }}</p>
+				</div>
+				<div class="card-body">
+					<img src="{{ asset('/img/picture/' ~ team.picture) | imagine_filter('TeamImage') }}" />
+				</a>
+				</div>
+				<div class="card-footer">
+					<button class="btn-lg btn-delete pointer col-12" data-toggle="modal"
+						data-target="#supprimer-{{team.id}}">Supprimer</button>
+				</div>
+			</div>
+		</a>
+
+		<!-- Modal -->
+		<div class="modal fade" id="supprimer-{{team.id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+			aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel"><center>Êtes vous sur de vouloir supprimer?</center></h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
+						<button type="button" class="btn btn-primary"><a
+								href="{{path('del_team', {id_team:team.id})}}">Oui</a></button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		{% endfor %}
+	</div>
+	<a class="add-team-btn pointer" data-toggle="modal" data-target="#addTeam">+</a>
+	{# <a class="add-team-btn pointer btn-msg align-self-end" data-toggle="modal" data-target="#messagesModal" href="">Chat</a> #}
+</div> 
+
+{% include 'team_form/index.html.twig' with {'form': form} %}
+
+{% endif %}
+{% endblock %}

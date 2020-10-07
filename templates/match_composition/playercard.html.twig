@@ -1,0 +1,27 @@
+<div class="draggable player_card" data-toggle="modal" data-target="#playerStatsModal" data-id-player="{{id}}">
+    <!-- <div> -->
+<img src="/img/picture{{asset(player.picture)}}" alt="">
+
+
+
+
+    <!-- </div> -->
+    <p class="player_initials player_{{id}}"></p>
+</div>
+
+    {# <img class="editicon pointer" src="{{asset ('icons/trash.png') }}" data-toggle="modal"
+        data-target="#SupprimerPlayer-{{player.id}}"> #}
+
+<script>
+    var lastname = "{{lastname}}";
+    var firstname = "{{firstname}}";
+    var l = lastname.charAt(0)
+    var f = firstname.charAt(0)
+    var initials = f + "." + l + ".";
+    $('.player_{{id}}').text(initials);
+
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>

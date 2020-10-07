@@ -1,0 +1,71 @@
+#messagesModal .modal-dialog .modal-content {
+    display: grid !important;
+    font-family: 'Roboto Condensed',
+        sans-serif !important;
+    grid-template-rows: auto 1fr;
+}
+
+#messagesModal .modal-dialog .modal-content .modal-header {
+    align-self: start;
+}
+
+#messagesModal .modal-dialog .modal-content .mdb-color {
+    background-color: #013974 !important;
+    font-family: 'Roboto Condensed',
+        sans-serif !important;
+
+}
+
+#messagesModal #messagesModalLabel {
+    color: white;
+    font-weight: bold;
+}
+
+#messagesModal .modal-dialog .modal-content .modal-body {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: grid !important;
+}
+
+#messagesModal .modal-dialog .modal-content .modal-body .container {
+    margin: 1rem;
+}
+
+#messagesModal .modal-dialog .modal-content .modal-body #chat {
+    border: 0;
+}
+
+#messagesModal .modal-dialog .modal-content .modal-body #chat textarea {
+    padding: .5rem;
+    background-color: white;
+}
+
+#messagesModal .modal-dialog .modal-content .modal-body .md-chat-form {
+    background-color: #f0f0f0 !important;
+    padding-top: .75rem;
+    border-top: 1px solid #dee2e6;
+    border-bottom: .5rem solid #013974;
+}
+
+#messagesModal .modal-dialog .modal-content .modal-body .md-form {
+    padding-bottom: .75rem;
+}
+
+#messagesModal .modal-dialog .modal-content .modal-body .msg-list div {
+    padding: 1rem;
+}
+
+#messagesModal .modal-dialog .modal-content .modal-body .msg-list .text-right {
+    background-color: #013974;
+    border-radius: 4px;
+    margin-left: auto;
+    width: max-content;
+    color: white;
+}
+
+#messagesModal .modal-dialog .modal-content .modal-body .msg-list .text-left {
+    background-color: ##01397429;
+    border-radius: 4px;
+    margin-right: auto;
+    width: max-content;
+}

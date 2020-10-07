@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>
+        {% block title %}Composition du match{% endblock %}
+        </title>
+    </head>
+</html>
+
+
+
+{% block stylesheets %}
+<link href="{{ asset('css/match_composition.css') }}" rel="stylesheet" />
+{% endblock %}
+
+
+
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link href="{{ asset('css/reset.css') }}" rel="stylesheet"/>
+<link href="{{ asset('css/main.css') }}" rel="stylesheet"/>
+<link href="{{ asset('css/util.css') }}" rel="stylesheet"/>
+<link href="{{ asset('css/forms.css') }}" rel="stylesheet"/>
+<link href="{{ asset('css/modal.css') }}" rel="stylesheet"/>
+<link href="{{ asset('css/chat.css') }}" rel="stylesheet"/>
+{# google fonts #}
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.21/b-1.6.2/b-colvis-1.6.2/fc-3.3.1/fh-3.1.7/kt-2.5.2/r-2.2.5/sc-2.0.2/sp-1.1.1/datatables.min.css"/>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.21/b-1.6.2/b-colvis-1.6.2/fc-3.3.1/fh-3.1.7/kt-2.5.2/r-2.2.5/sc-2.0.2/sp-1.1.1/datatables.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital&family=Roboto:wght@300;500&display=swap" rel="stylesheet">
+{# bootstrap #}
+<!-- CSS only -->
+
+{# datatables #}
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.21/b-1.6.2/b-colvis-1.6.2/fc-3.3.1/fh-3.1.7/kt-2.5.2/r-2.2.5/sc-2.0.2/sp-1.1.1/datatables.min.css%22/%3E <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.21/b-1.6.2/b-colvis-1.6.2/fc-3.3.1/fh-3.1.7/kt-2.5.2/r-2.2.5/sc-2.0.2/sp-1.1.1/datatables.min.js%22%3E</script>
+
+<link rel="stylesheet" href="{{ asset('css/flashy.css') }}">
+<link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"/>
+</head>
+
+<body>
+
+{% block body %}
+{% include 'main_nav.html.twig' %}
+{% include 'chat.html.twig' %}
+
+
+
+<!--modal-->
+<div id="playerStatsModal" class="modal" tabindex="-1"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+<div class="menu-tab">
+    <center>
+        <h4>Compositons : </h4>
+        <a href="{{path('match_composition', {id_match: id_match, id_composition: 0})}}"><h4 {{ (idcomposition == 0) ? 'class="active"' : 'class=""' }}>1</h4></a>
+        <a href="{{path('match_composition', {id_match: id_match, id_composition: 1})}}"><h4 {{ (idcomposition == 1) ? 'class="active"' : 'class=""' }}>2</h4></a>
+        <a href="{{path('match_composition', {id_match: id_match, id_composition: 2})}}"><h4 {{ (idcomposition == 2) ? 'class="active"' : 'class=""' }}>3</h4></a>
+    </center>
+</div>
+
+<div class="main-wrapper">
+
+    <div class="container">
+
+        <input type='hidden' id="idcomposition" value='{{ idcomposition }}' />
+        <input type='hidden' id="composition" value='{{ composition }}' />
+        <input type='hidden' id="clickedPlayer" value='{{ composition }}' />
+
+        <div class="example-wrapper global" data-id-match="{{ id_match }}">
+
+            <div style="display: flex; flex-direction: row; align-items: start; justify-content: center;">
+                <div
+                    style="display: flex; flex-direction: column; align-items: start; justify-content: space-between; background-size: cover; background-image: url('{{ asset('img/field.png') }}'); width: 602px; height: 851px">
+                    <div
+                        style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; width: 602px; height: 740px;  margin-top: 30px;">
+                        <div class="field-row" style="width: 602px;">
+                            <div class="droppable field-position" data-id-position="1">
+                                <p class="field-number">1</p>
+                            </div>
+                            <div class="droppable field-position" data-id-position="2">
+                                <p class="field-number">2</p>
+                            </div>
+                            <div class="droppable field-position" data-id-position="3">
+                                <p class="field-number">3</p>
+                            </div>
+                        </div>
+                        <div class="field-row" style="width: 50%;">
+                            <div class="droppable field-position" data-id-position="4">
+                                <p class="field-number">4</p>
+                            </div>
+                            <div class="droppable field-position" data-id-position="5">
+                                <p class="field-number">5</p>
+                            </div>
+                        </div>
+                        <div class="field-row" style="width: 500px; justify-content: space-between;">
+                            <div class="droppable field-position" data-id-position="6">
+                                <p class="field-number">6</p>
+                            </div>
+                            <div class="droppable field-position" data-id-position="8">
+                                <p class="field-number">8</p>
+                            </div>
+                            <div class="droppable field-position" data-id-position="7">
+                                <p class="field-number">7</p>
+                            </div>
+                        </div>
+                        <div class="field-row" style="width: 50%;">
+                            <div class="droppable field-position" data-id-position="9">
+                                <p class="field-number">9</p>
+                            </div>
+                            <div class="droppable field-position" data-id-position="10">
+                                <p class="field-number">10</p>
+                            </div>
+                        </div>
+                        <div class="field-row" style="width: 602px;">
+                            <div class="droppable field-position" data-id-position="11">
+                                <p class="field-number">11</p>
+                            </div>
+                            <div class="droppable field-position" data-id-position="12">
+                                <p class="field-number">12</p>
+                            </div>
+                            <div class="droppable field-position" data-id-position="13">
+                                <p class="field-number">13</p>
+                            </div>
+                            <div class="droppable field-position" data-id-position="14">
+                                <p class="field-number">14</p>
+                            </div>
+                        </div>
+                        <div class="field-row" style="width: 602px;">
+                            <div class="droppable field-position" data-id-position="15">
+                                <p class="field-number">15</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="list">
+
+                    <div>
+                        <h3>Banc</h3>
+                        <div data-id-position="0" id="banc" class="droppable">
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3>Sélection</h3>
+                        <div data-id-position="0" id="selected" class="droppable">
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3>Equipe</h3>
+                        <div data-id-position="0" id="players_list" class="droppable">
+                            {% for player in players %}
+                            {% include 'match_composition/playercard.html.twig' with {'id': player.id, 'lastname': player.firstname, 'firstname': player.lestname} %}
+                            {% include 'match_composition/playerstats.html.twig' with { 'id': player.id, 
+                                                                                        'essais': player.essais, 
+                                                                                        'transformations': player.transformations,
+                                                                                        'penalites': player.penalites,
+                                                                                        'drops': player.drops,
+                                                                                        'rouges': player.rouges,
+                                                                                        'jaunes': player.jaunes,
+                                                                                        'temps': player.temps
+                                                                                    } %}
+                            {% endfor %}
+                        </div>
+                    </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <center>
+    <br><br>
+<a class="btn btn-lg messagerie-submit" style="" data-toggle="modal" data-target="#messagesModal" href="">Chat</a>
+</center>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+    integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="{{ asset('js/composition.js') }}"></script>
+
+<script>
+    $(function () {
+
+        // stats modal code
+
+        var clickedPlayer = 33;
+
+        $(".player_card").click(function(e) {
+            clickedPlayer = $(this).data("idPlayer");
+        });
+
+
+        $('#playerStatsModal').on('show.bs.modal', function (e) {
+        // $('.player').on('shown.bs.modal', function (e) {
+            // do something...
+            // alert("blah");
+            // let idPlayer = 33;
+            // let idMatch =  159;
+            let idPlayer = clickedPlayer;
+            let idMatch = {{ id_match }} ;
+            let url =  "/stat/joueur/" + idMatch + "/" + idPlayer;
+            $("#playerStatsModal").load(url);
+        })
+
+
+        $('.player_card').mouseenter(
+            function () {
+                idPlayer = $(this).data("idPlayer");
+                $(document).on('mousemove', function (e) {
+                    $('.stats-modal-hidden').css('top', e.pageY + 5);
+                    $('.stats-modal-hidden').css('left', e.pageX + 5);
+                });
+                $('.player' + idPlayer + '-stats-modal').fadeIn()
+            });
+        $('.player_card').mouseleave(
+            function () {
+                $('.player' + idPlayer + '-stats-modal').fadeOut();
+            })
+    });
+</script>
+{% endblock %}
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</body></html>
+
