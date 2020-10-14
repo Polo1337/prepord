@@ -28,11 +28,14 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/register", name="app_register")
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, LoginFormAuthenticator $authenticator): Response
+    public function register(SendEmailRequest $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, LoginFormAuthenticator $authenticator): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
+
+        dump(urlencode('compte@petitromain.fr'));
+        dump(urlencode('#Rec08le2'));
 
         if ($form->isSubmitted() && $form->isValid()) {
             $user->setPassword(
@@ -48,8 +51,9 @@ class RegistrationController extends AbstractController
 
             $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
                 (new TemplatedEmail())
-                    ->from(new Address('lingat@simplon-charleville.fr', 'pol'))
-                    ->to($user->getEmail())
+                    ->from(new Address('contact@reccoach.fr', 'REC Coach'))
+                    ->to('lingat@simplon-charleville.fr')
+                    // ->to($user->getEmail())
                     ->subject('Please Confirm your Email')
                     ->htmlTemplate('registration/confirmation_email.html.twig')
             );

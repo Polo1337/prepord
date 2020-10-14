@@ -41,7 +41,7 @@
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
 						<button type="button" class="btn btn-primary"><a
-								href="{{path('del_team', {id_team:team.id})}}">Oui</a></button>
+								href="{{path('del_team', {id_team:team.id, _csrf_token: csrf_token('delete')})}}">Oui</a></button>
 					</div>
 				</div>
 			</div>
