@@ -20,10 +20,9 @@ class DelMatchController extends AbstractController
         $token = new CsrfToken('delete', $request->query->get('_csrf_token'));
 
         if (!$csrfTokenManager->isTokenValid($token)) {
-            throw $this->createAccessDeniedException('Token CSRF invalide');
-            return $this->redirectToRoute('app_login');
+            // throw $this->createAccessDeniedException('Token CSRF invalide');
+            return $this->redirectToRoute('team_screen');
         }
-            // if ($this->isCsrfTokenValid('delete' . $id_team.$id_match->))
 
         $entityManager = $this->getDoctrine()->getManager();
         $match=$matchRep->find($id_match);

@@ -32,6 +32,7 @@ security:
                 target: app_login
             form_login:
                 # ...
+                default_target_path: team_screen
                 always_use_default_target_path: true                
 
             # activate different ways to authenticate

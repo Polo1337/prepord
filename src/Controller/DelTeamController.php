@@ -20,7 +20,8 @@ class DelTeamController extends AbstractController
         $token = new CsrfToken('delete', $request->query->get('_csrf_token'));
 
         if (!$csrfTokenManager->isTokenValid($token)) {
-            throw $this->createAccessDeniedException('Token CSRF invalide');
+            // throw $this->createAccessDeniedException('Token CSRF invalide');
+            return $this->redirectToRoute('team_screen');
         }
 
 
