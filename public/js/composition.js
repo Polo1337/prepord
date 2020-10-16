@@ -89,21 +89,33 @@ $('.draggable').draggable({
           if(id_position>0) positions[id_comp]['compo'][id_position] = id_player;
           
           if($(this).attr('id')=="banc"){
-            positions[id_comp]['banc'].push(id_player)
+            positions.forEach(function(compo)
+            {
+              compo['banc'].push(id_player);
+            });
           }
           if($(this).attr('id')=="selected"){
-            positions[id_comp]['selected'].push(id_player)
+            positions.forEach(function(compo)
+            {
+              compo['selected'].push(id_player)
+            });
           }
           
           if(prev_position==0) {
             if($(previous).attr('id')=="banc"){
+              positions.forEach(function(compo)
+              {
+                for( var i = 0; i < compo['banc'].length; i++){ if ( compo['banc'][i] == id_player) { compo['banc'].splice(i, 1); }}
+              });
               // console.log("banc before : " + positions[id_comp]['banc']);
-              for( var i = 0; i < positions[id_comp]['banc'].length; i++){ if ( positions[id_comp]['banc'][i] == id_player) { positions[id_comp]['banc'].splice(i, 1); }}
               // console.log("banc after : " + positions[id_comp]['banc']);
             }
             if($(previous).attr('id')=="selected"){
               // console.log("selected before : " + positions[id_comp]['selected']);
-              for( var i = 0; i < positions[id_comp]['selected'].length; i++){ if ( positions[id_comp]['selected'][i] == id_player) { positions[id_comp]['selected'].splice(i, 1); }}
+              positions.forEach(function(compo)
+              {
+                for( var i = 0; i < compo['selected'].length; i++){ if ( compo['selected'][i] == id_player) { compo['selected'].splice(i, 1); }}
+              });
               // console.log("selected after : " + positions[id_comp]['selected']);
             }
           }
