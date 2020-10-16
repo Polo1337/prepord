@@ -28,7 +28,6 @@ class DelMatchController extends AbstractController
         $match=$matchRep->find($id_match);
         $entityManager->remove($match);
         $entityManager->flush();
-
         
         return $this->redirectToRoute('match_calendar',array(
             'id_team' => $id_team,

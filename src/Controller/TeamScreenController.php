@@ -32,7 +32,7 @@ class TeamScreenController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {            
-            $this->addFlash('success', 'Ajouté avec succes !');
+            
             $task = $form['picture']->getData();
             $team->addUser($this->getUser());
 
@@ -57,6 +57,7 @@ class TeamScreenController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($team);
             $entityManager->flush();
+            $this->addFlash('success', 'Ajouté avec succes !');
 
             return $this->redirectToRoute('team_screen');
         }

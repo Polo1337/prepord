@@ -24,12 +24,14 @@ class DelTeamController extends AbstractController
             return $this->redirectToRoute('team_screen');
         }
 
-
         $entityManager = $this->getDoctrine()->getManager();
         $team = $teamRepo->find($id_team);
-        $entityManager->remove($team);
-        $entityManager->flush();
 
+        if($team->getUsers()->contains($this->getUser()))
+        {
+            $entityManager->remove($team);
+            $entityManager->flush();
+        }
         return $this->redirectToRoute('team_screen');
     }
 }

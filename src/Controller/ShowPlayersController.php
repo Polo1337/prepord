@@ -62,7 +62,7 @@ class ShowPlayersController extends AbstractController
             } else {
                 $player->setPicture("default_avatar.png");
             }
-            $player->setStats([]);
+            // $player->setStats([]);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($player);
             $entityManager->flush();

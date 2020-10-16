@@ -26,8 +26,11 @@ class DelPlayerController extends AbstractController
 
         $entityManager = $this->getDoctrine()->getManager();
         $player = $playerRepo->find($id_player);
-        $entityManager->remove($player);
-        $entityManager->flush();
+        if($player->getPlayIn()->getUsers()->contains($this->getUser()))
+        {
+            $entityManager->remove($player);
+            $entityManager->flush();
+        }
 
         return $this->redirectToRoute('show_players',array(
             'id_team' => $id_team,
