@@ -22,8 +22,8 @@ class PlayerMatchStatsType extends AbstractType
             ->add('rouges')
             ->add('jaunes')
             ->add('temps')
-            ->add('save', SubmitType::class, [
-                'attr' => ['class' => 'save'],
+            ->add('Sauvegarder', SubmitType::class, [
+                'attr' => ['class' => 'btn-lg'],
             ]);
     }
 
