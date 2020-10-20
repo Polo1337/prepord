@@ -19,9 +19,10 @@
     }
 
 }
-        .modal-card {
-            overflow: auto;
-        }
+
+.modal-card {
+    overflow: auto;
+}
 
 .form-add {
     div {
@@ -36,7 +37,8 @@
 
     div {
         text-align: center;
-        padding: .5rem .5rem .25rem;;
+        padding: .5rem .5rem .25rem;
+        ;
     }
 
     select {
@@ -47,8 +49,23 @@
 }
 
 // players
-.add_players {
+.full-grid {
+    position: absolute;
+    z-index: 9999;
+    width: 98vw;
+
+    .main-wrapper {
+        padding: 1rem 1.5rem;
+        width: max-content;
+        margin: 1rem auto;
+    }
+
+    input,
     label {
-        
+        font-size: 1rem;
+    }
+
+    label {
+        margin: .25rem;
     }
 }

@@ -48,7 +48,7 @@
       justify-content: space-around;
 }
 
-#players_list, #banc, #selected {
+#players_list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -62,8 +62,7 @@
       justify-content: space-around;
   border: 4px dashed #013974;
   background-color: #e3e8ee;
-  /* min-width: 3rem; */
-  width: 83px;
+  min-width: 3rem;
   min-height: 3rem;
 }
 
@@ -128,20 +127,3 @@ table td.body {
   background-color: #E3E8EE;
 }
 /*# sourceMappingURL=match_composition.css.map */
-
-#list {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  min-width: 300px;
-}
-
-#list h3 {
-  font-weight: 900;
-  font-size: 1.1em;
-
-}
-
-#list>div>div {
-  min-height: 720px;
-}

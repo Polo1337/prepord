@@ -569,13 +569,4 @@ a.btn-lg {
     grid-row: 2 !important;
   }
 }
-
-/* show player edit icon */
-.editicon {
-  transition: .25s
-}
-.editicon:hover {
-  transform:scale(1.5,1.5) ;
-}
-
 /*# sourceMappingURL=main.css.map */

@@ -2,7 +2,7 @@
   display: none;
 }
 
-.guigui .modal-content {
+.modal-content {
   position: absolute;
   top: 0;
   width: 100vw;
@@ -46,15 +46,26 @@
   margin: auto;
 }
 
-/* .full-grid {
-  width: 100vw;
-  height: 100vh;
-  display: block;
-  place-content: center;
-} */
+.full-grid {
+  position: absolute;
+  z-index: 9999;
+  width: 98vw;
+}
 
-/* .jaja {
-  max-width: 50vw;
-} */
+.full-grid .main-wrapper {
+  padding: 1rem 1.5rem;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  margin: 1rem auto;
+}
 
+.full-grid input,
+.full-grid label {
+  font-size: 1rem;
+}
+
+.full-grid label {
+  margin: .25rem;
+}
 /*# sourceMappingURL=modal.css.map */
