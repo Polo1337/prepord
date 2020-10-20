@@ -52,6 +52,10 @@
   width: 98vw;
 }
 
+.full-grid .card-header {
+  padding-left: 0;
+}
+
 .full-grid .main-wrapper {
   padding: 1rem 1.5rem;
   width: -webkit-max-content;
@@ -67,5 +71,14 @@
 
 .full-grid label {
   margin: .25rem;
+}
+
+.full-grid button {
+  color: white;
+  margin: auto;
+}
+
+.full-grid button.hover {
+  color: #F2362F;
 }
 /*# sourceMappingURL=modal.css.map */

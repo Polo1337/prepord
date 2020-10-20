@@ -53,6 +53,10 @@
     position: absolute;
     z-index: 9999;
     width: 98vw;
+    
+    .card-header {
+        padding-left: 0;
+    }
 
     .main-wrapper {
         padding: 1rem 1.5rem;
@@ -67,5 +71,14 @@
 
     label {
         margin: .25rem;
+    }
+
+    button {
+        color: white;
+        margin: auto;
+
+        &.hover {
+            color: $red;
+        }
     }
 }
