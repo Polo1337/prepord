@@ -13,15 +13,16 @@ class SendEmailController extends AbstractController
     public function index($name, $mailer)
     {
         $message = (new \Swift_Message('Hello Email'))
-        ->setFrom('contact@reccoach.fr')
-        ->setTo('lingat@simplon-charleville.fr')
+        ->setFrom('contact@adrennes-boutique.fr')
+        ->setTo('poucet@simplon-charleville.fr')
         ->setBody(
-            $this->renderView(
-                // templates/emails/registration.html.twig
-                'emails/registration.html.twig',
-                ['name' => $name]
-            ),
-            'text/html'
+            // $this->renderView(
+            //     // templates/emails/registration.html.twig
+            //     'emails/registration.html.twig',
+            //     ['name' => $name]
+            // ),
+            // 'text/html'
+            'rfgierjgi'
         )
 
         // // you can remove the following code if you don't define a text version for your emails
